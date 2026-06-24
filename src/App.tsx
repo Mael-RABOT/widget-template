@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { getCurrentWindow } from "@tauri-apps/api/window";
 import "./App.css";
+import Container from "./container";
 
 function App() {
   const [size, setSize] = useState({ width: 0, height: 0 });
@@ -15,16 +16,23 @@ function App() {
   }, []);
 
   return (
-    <div
-      className="widget"
-      style={{
-        width: size.width,
-        height: size.height,
-      }}
-    >
-      Hello WORLD !
+  <div
+    className="widget"
+    style={{
+      width: size.width,
+      height: size.height,
+    }}
+  >
+    <div className="widget-header">
+      <span>SYSTEM MONITOR</span>
+      <span className="status-dot">● ONLINE</span>
     </div>
-  );
+
+    <div className="widget-frame">
+      <Container />
+    </div>
+  </div>
+);
 }
 
 export default App;
